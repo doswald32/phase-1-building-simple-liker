@@ -2,8 +2,26 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-// Your JavaScript code goes here!
+const hideError = document.getElementById("modal-message");
+hideError.className = "hidden";
 
+const likeHearts = document.querySelectorAll(".like-glyph");
+console.log(likeHearts);
+
+for (const heart of likeHearts) {
+  heart.addEventListener('click', likeCallback);
+};
+
+function likeCallback(event) {
+  const heart = event.target;
+  mimicServerCall()
+  .then(function(serverMessage){
+    alert("You notified the server!");
+  })
+  .catch(function(error) {
+    alert("Something went wrong!");
+  })
+};
 
 
 
